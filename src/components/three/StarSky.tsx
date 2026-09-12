@@ -116,7 +116,7 @@ function ConstellationLines() {
       <lineBasicMaterial
         color="#e9974a"
         transparent
-        opacity={0.28}
+        opacity={0.34}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />
@@ -141,9 +141,9 @@ function nebulaTexture(variant: number) {
   };
 
   const palettes = [
-    ["rgba(255,196,120,0.55)", "rgba(196,86,32,0.28)", "rgba(74,26,12,0)"],
-    ["rgba(255,150,70,0.42)", "rgba(140,52,24,0.24)", "rgba(40,16,8,0)"],
-    ["rgba(255,226,178,0.34)", "rgba(206,110,46,0.2)", "rgba(30,12,6,0)"],
+    ["rgba(255,190,120,0.20)", "rgba(184,80,30,0.10)", "rgba(60,22,10,0)"],
+    ["rgba(255,148,68,0.15)", "rgba(130,48,22,0.08)", "rgba(34,14,7,0)"],
+    ["rgba(255,222,176,0.12)", "rgba(196,104,44,0.07)", "rgba(26,10,5,0)"],
   ];
   const palette = palettes[variant % palettes.length]!;
 
@@ -199,9 +199,9 @@ function NebulaShell() {
   });
 
   const configs = [
-    { radius: 19, opacity: 0.5, repeat: 1.6, rotation: [0.2, 0, 0.1] },
-    { radius: 21.5, opacity: 0.38, repeat: 2.4, rotation: [-0.4, 1.2, -0.2] },
-    { radius: 24, opacity: 0.28, repeat: 1.1, rotation: [0.9, 2.4, 0.4] },
+    { radius: 19, opacity: 0.20, repeat: 1.6, rotation: [0.2, 0, 0.1] },
+    { radius: 21.5, opacity: 0.14, repeat: 2.4, rotation: [-0.4, 1.2, -0.2] },
+    { radius: 24, opacity: 0.10, repeat: 1.1, rotation: [0.9, 2.4, 0.4] },
   ] as const;
 
   return (
