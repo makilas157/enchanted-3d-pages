@@ -165,6 +165,7 @@ export default function NavConstellationScene({
       <ambientLight intensity={0.45} />
       <directionalLight position={[4, 6, 5]} intensity={2.4} color="#ffd69c" castShadow />
       <pointLight position={[-3, -1, 3]} intensity={16} color="#b9401f" distance={14} />
+      <StarSky />
       <Constellation
         activeSlug={activeSlug}
         onHover={onHover}
