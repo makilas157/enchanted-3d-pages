@@ -221,6 +221,7 @@ function Constellation({
         />
       </mesh>
       <OrbitingKnot />
+      <OrbitingSpiral />
       {navDestinations.map((item, index) => (
         <NavNode
           key={item.slug}
