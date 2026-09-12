@@ -64,7 +64,7 @@ function StarPoints({
     <points geometry={geometry}>
       <pointsMaterial
         size={size}
-        map={texture ?? undefined}
+        map={texture}
         vertexColors
         transparent
         depthWrite={false}
@@ -219,7 +219,7 @@ function NebulaShell() {
           >
             <sphereGeometry args={[cfg.radius, 48, 32]} />
             <meshBasicMaterial
-              map={tex ?? undefined}
+              map={tex ?? null}
               side={THREE.BackSide}
               transparent
               opacity={cfg.opacity}
