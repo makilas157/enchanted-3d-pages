@@ -87,6 +87,44 @@ function NavNode({
   );
 }
 
+function OrbitingKnot() {
+  const pivot = useRef<THREE.Group>(null);
+  const mesh = useRef<THREE.Mesh>(null);
+
+  useFrame((_, rawDelta) => {
+    const delta = Math.min(rawDelta, 0.05);
+    if (pivot.current) pivot.current.rotation.y += delta * 0.22;
+    if (mesh.current) {
+      mesh.current.rotation.x += delta * 0.35;
+      mesh.current.rotation.z += delta * 0.18;
+    }
+  });
+
+  return (
+    <group ref={pivot} rotation={[0.32, 0, 0.18]}>
+      <group position={[0, -2.1, 0]}>
+        <Float speed={1.4} rotationIntensity={0.25} floatIntensity={0.7}>
+          <mesh ref={mesh} castShadow>
+            <torusKnotGeometry args={[0.42, 0.14, 128, 16]} />
+            <meshPhysicalMaterial
+              color="#e58b32"
+              emissive="#5c2a11"
+              emissiveIntensity={0.32}
+              metalness={0.78}
+              roughness={0.22}
+              clearcoat={0.7}
+            />
+          </mesh>
+          <mesh rotation={[Math.PI / 2.4, -0.4, 0]}>
+            <torusGeometry args={[0.85, 0.005, 8, 96]} />
+            <meshBasicMaterial color="#efaa55" transparent opacity={0.35} />
+          </mesh>
+        </Float>
+      </group>
+    </group>
+  );
+}
+
 function Constellation({
   activeSlug,
   onHover,
