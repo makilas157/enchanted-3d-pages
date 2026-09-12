@@ -1,7 +1,8 @@
 import "@/lib/three-dev-attrs";
 import { Environment, Float, Html, Lightformer } from "@react-three/drei";
 import { Canvas, useFrame, type ThreeEvent } from "@react-three/fiber";
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import StarSky from "./StarSky";
 import * as THREE from "three";
 import { useNavigate } from "@tanstack/react-router";
 import { navDestinations, type NavDestination } from "@/data/site";
