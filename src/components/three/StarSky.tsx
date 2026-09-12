@@ -199,13 +199,18 @@ function NebulaShell() {
   });
 
   const configs = [
-    { radius: 19, opacity: 0.20, repeat: 1.6, rotation: [0.2, 0, 0.1] },
-    { radius: 21.5, opacity: 0.14, repeat: 2.4, rotation: [-0.4, 1.2, -0.2] },
-    { radius: 24, opacity: 0.10, repeat: 1.1, rotation: [0.9, 2.4, 0.4] },
+    { radius: 19, opacity: 0.40, repeat: 1.6, rotation: [0.2, 0, 0.1] },
+    { radius: 21.5, opacity: 0.28, repeat: 2.4, rotation: [-0.4, 1.2, -0.2] },
+    { radius: 24, opacity: 0.18, repeat: 1.1, rotation: [0.9, 2.4, 0.4] },
   ] as const;
 
   return (
     <group>
+      {/* deep-space base so the nebula and stars read against the page art */}
+      <mesh>
+        <sphereGeometry args={[27, 32, 24]} />
+        <meshBasicMaterial color="#180a06" side={THREE.BackSide} transparent opacity={0.82} depthWrite={false} />
+      </mesh>
       {configs.map((cfg, i) => {
         const tex = textures[i];
         if (tex) tex.repeat.set(cfg.repeat, cfg.repeat);
