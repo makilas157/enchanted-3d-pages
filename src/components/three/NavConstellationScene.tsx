@@ -125,6 +125,60 @@ function OrbitingKnot() {
   );
 }
 
+function OrbitingSpiral() {
+  const pivot = useRef<THREE.Group>(null);
+  const mesh = useRef<THREE.Mesh>(null);
+
+  const curve = useMemo(() => {
+    const points: THREE.Vector3[] = [];
+    const loops = 2.5;
+    const radius = 0.55;
+    const height = 1.25;
+    const segments = 120;
+    for (let i = 0; i <= segments; i++) {
+      const t = i / segments;
+      const angle = t * Math.PI * 2 * loops;
+      const r = radius * (1 - t * 0.3);
+      const x = Math.cos(angle) * r;
+      const z = Math.sin(angle) * r;
+      const y = (t - 0.5) * height;
+      points.push(new THREE.Vector3(x, y, z));
+    }
+    return new THREE.CatmullRomCurve3(points);
+  }, []);
+
+  useFrame((_, rawDelta) => {
+    const delta = Math.min(rawDelta, 0.05);
+    if (pivot.current) pivot.current.rotation.y -= delta * 0.18;
+    if (mesh.current) {
+      mesh.current.rotation.y += delta * 0.22;
+      mesh.current.rotation.z += delta * 0.1;
+    }
+  });
+
+  return (
+    <group ref={pivot} rotation={[0.2, 0, -0.22]}>
+      <group position={[0, 2.25, 0]}>
+        <Float speed={1.2} rotationIntensity={0.22} floatIntensity={0.55}>
+          <mesh ref={mesh} castShadow>
+            <tubeGeometry args={[curve, 120, 0.038, 8, false]} />
+            <meshPhysicalMaterial
+              color="#f6c98a"
+              emissive="#b4551f"
+              emissiveIntensity={0.55}
+              metalness={0.65}
+              roughness={0.18}
+              clearcoat={1}
+              transparent
+              opacity={0.94}
+            />
+          </mesh>
+        </Float>
+      </group>
+    </group>
+  );
+}
+
 function Constellation({
   activeSlug,
   onHover,
