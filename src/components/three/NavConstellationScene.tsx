@@ -1,3 +1,4 @@
+import "@/lib/three-dev-attrs";
 import { Environment, Float, Html, Lightformer } from "@react-three/drei";
 import { Canvas, useFrame, type ThreeEvent } from "@react-three/fiber";
 import { useMemo, useRef, useState } from "react";
